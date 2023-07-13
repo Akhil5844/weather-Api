@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "0a2820c5-9d69-45b4-8d6d-ac138ba712f9",
+		"name": "weather APi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25042231"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"longitude & latitude\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.coord.lon).to.eql(-0.13);\r",
+							"    pm.expect(jsonData.coord.lat).to.eql(51.51);\r",
+							"});\r",
+							"pm.test(\"base\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.base).to.eql(\"stations\");\r",
+							"});\r",
+							"pm.test(\"main tempreature\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.main.temp).to.eql(280.32);\r",
+							"});\r",
+							"pm.test(\"Visibility\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.visibility).to.eql(10000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6 907d289e10d714a6e88b30761fae22.",
+					"protocol": "https",
+					"host": [
+						"samples",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "London,uk"
+						},
+						{
+							"key": "appid",
+							"value": "b6 907d289e10d714a6e88b30761fae22."
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
